@@ -26,7 +26,8 @@ function add(numbers) {
     throw `Negatives not allowed: ${negatives.join(',')}`
   };
 
-  return parts.reduce((acc, num) => acc + num, 0);
+  const validParts = parts.filter(num => num <= 1000);
+  return validParts.reduce((acc, num) => acc + num, 0);
 }
 
 function getCalledCounts() {
