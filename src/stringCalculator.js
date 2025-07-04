@@ -3,7 +3,7 @@ function add(numbers) {
   if(!numbers.includes(',')){
     return parseInt(numbers);
   }
-  const parts = numbers.split(',');
+  const parts = numbers.split(',').map(n => parseInt(n));
   return parts.reduce((acc,num) => acc + parseInt(num),0);
 }
 

@@ -11,7 +11,7 @@ describe("Step 1 - Basic tests", () => {
     expect(add("1,2")).toBe(3);
   })
   test("Multiple Comma separated numbers returns sum", () => {
-    expact(add("1,2,3")).toBe(6);
+    expect(add("1,2,3")).toBe(6);
   })
 });
 
