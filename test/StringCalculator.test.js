@@ -22,6 +22,9 @@ describe("Step 1 - Basic tests", () => {
   test("Negative number throws error", () => {
     expect(() => add("1,-2,3")).toThrow("Negatives not allowed: -2");
   })
+  test("Multiple negative numbers throw exception with all negatives in message", () => {
+    expect(() => add("1,-2,3,-6")).toThrow("Negatives not allowed: -2,-6");
+  })
 });
 
 
