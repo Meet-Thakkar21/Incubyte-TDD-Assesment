@@ -1,5 +1,13 @@
 let callCount = 0;
 
+function extractDelimiter(delimiterSection){
+  if(delimiterSection.startsWith('[')){
+    const delimiters = [...delimiterSection.matchAll(/\[(.*?)]/g)].map(m=>m[1]);
+    return new RegExp(delimiters.map(d => d.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')).join('|'));
+  }
+  return new RegExp(delimiterSection);
+
+}
 function parseNumbers(numbers){
   let delimiter = /,|\n/;
   let numsSection = numbers;
@@ -7,13 +15,7 @@ function parseNumbers(numbers){
   if(numbers.startsWith('//')){
     const endOfDelimiter = numbers.indexOf('\n');
     delimiterSection = numbers.substring(2, endOfDelimiter);
-    if(delimiterSection.startsWith('[')){
-      const delimiters = [...delimiterSection.matchAll(/\[(.*?)\]/g)].map(m=>m[1].replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
-      delimiter = new RegExp(delimiters.join('|'));
-    }
-    else{
-      delimiter = new RegExp(numbers[2]);
-    }
+    delimiter = extractDelimiter(delimiterSection);
     numsSection = numbers.slice(endOfDelimiter + 1);
   }
   return numsSection.split(delimiter).map(n => parseInt(n, 10));
