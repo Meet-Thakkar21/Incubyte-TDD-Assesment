@@ -32,6 +32,9 @@ describe("Step 1 - Basic tests", () => {
     calculator.add("3");
     expect( calculator.getCalledCounts()).toBe(3);
   })
+  test("Numbers bigger than 1000 are ignored", () => {
+    expect(add("1001,2")).toBe(2);
+  })
 });
 
 
