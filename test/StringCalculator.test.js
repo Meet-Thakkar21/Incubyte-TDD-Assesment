@@ -19,6 +19,9 @@ describe("Step 1 - Basic tests", () => {
   test("Custom Delimiter in //;\\n1;2 format returns sum", () => {
     expect(add("//;\n1;2")).toBe(3);
   })
+  test("Negative number throws error", () => {
+    expect(() => add("1,-2,3")).toThrow("Negatives not allowed: -2");
+  })
 });
 
 
