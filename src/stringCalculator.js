@@ -8,7 +8,12 @@ function add(numbers) {
     delimiter = new RegExp(numbers[2]);
     numsSection = numbers.slice(endOfDelimiter + 1);
   };
+
   const parts = numsSection.split(delimiter).map(n => parseInt(n, 10));
+  const negatives = parts.filter(num => num < 0);
+  if(negatives.length > 0) {
+    throw `Negatives not allowed: ${negatives}`
+  };
   return parts.reduce((acc, num) => acc + num, 0);
 }
 
