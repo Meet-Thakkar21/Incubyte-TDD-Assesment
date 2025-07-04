@@ -1,5 +1,5 @@
 const {add} = require("../src/stringCalculator");
-
+const calulator = require("../src/stringCalculator");
 describe("Step 1 - Basic tests", () => {
   test("Empty string returns 0", () => {
     expect(add("")).toBe(0);
@@ -24,6 +24,12 @@ describe("Step 1 - Basic tests", () => {
   })
   test("Multiple negative numbers throw exception with all negatives in message", () => {
     expect(() => add("1,-2,3,-6")).toThrow("Negatives not allowed: -2,-6");
+  })
+  test("GetCalledCounts returns number of times add was called", () => {
+    calculator.add("1");
+    calculator.add("2");
+    calculator.add("3");
+    expect(() => calculator.getCalledCounts()).toBe(3);
   })
 });
 
