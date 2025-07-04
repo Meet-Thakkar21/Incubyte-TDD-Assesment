@@ -41,6 +41,9 @@ describe("Step 1 - Basic tests", () => {
   test("Multiple delimiters like //[delim1][delim2] are supported" , () => {
     expect(add("//[*][%]\n1*2%3")).toBe(6);
   })
+  test("Multiple delimiters with length > 1 are supported like //[**][%%]" , () => {
+      expect(add("//[**][%%]\n1**2%%3")).toBe(6);
+  })
 });
 
 
