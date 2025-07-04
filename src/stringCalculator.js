@@ -12,6 +12,9 @@ function parseNumbers(numbers){
   return numsSection.split(delimiter).map(n => parseInt(n, 10));
 }
 
+function filterValidNumbers(numbersArray){
+  return numbersArray.filter(num => num <= 1000);
+}
 
 function add(numbers) {
 
@@ -26,7 +29,7 @@ function add(numbers) {
     throw `Negatives not allowed: ${negatives.join(',')}`
   };
 
-  const validParts = parts.filter(num => num <= 1000);
+  const validParts = filterValidNumbers(parts);
   return validParts.reduce((acc, num) => acc + num, 0);
 }
 
