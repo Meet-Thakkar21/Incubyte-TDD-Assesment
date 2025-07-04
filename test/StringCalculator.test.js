@@ -7,6 +7,9 @@ describe("Step 1 - Basic tests", () => {
   test("Single number returns itself", () => {
     expect(add("1")).toBe(1);
   })
+  test("Two numbers returns sum", () => {
+    expect(add("1,2")).toBe(3);
+  })
 });
 
 
