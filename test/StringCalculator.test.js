@@ -38,6 +38,11 @@ describe("Step 1 - Basic tests", () => {
   test("Delimiters of any length are supported using //[***]\n format", () => {
     expect(add("//[***]\n1***2***3")).toBe(6);
   })
+  test("Multiple delimiters like //[delim1][delim2] are supported" , () => {
+    expect(add("//[*][%]\n1*2%3")).toBe(6);
+  })
 });
+
+
 
 
