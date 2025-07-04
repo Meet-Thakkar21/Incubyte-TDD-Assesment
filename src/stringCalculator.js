@@ -6,7 +6,14 @@ function parseNumbers(numbers){
   
   if(numbers.startsWith('//')){
     const endOfDelimiter = numbers.indexOf('\n');
-    delimiter = new RegExp(numbers[2]);
+    delimiterSection = numbers.substring(2, endOfDelimiter);
+    if(delimiterSection.startsWith('[')){
+      const delimiters = [...delimiterSection.matchAll(/\[(.*?)\]/g)].map(m=>m[1].replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
+      delimiter = new RegExp(delimiters.join('|'));
+    }
+    else{
+      delimiter = new RegExp(numbers[2]);
+    }
     numsSection = numbers.slice(endOfDelimiter + 1);
   }
   return numsSection.split(delimiter).map(n => parseInt(n, 10));

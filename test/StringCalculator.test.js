@@ -35,7 +35,7 @@ describe("Step 1 - Basic tests", () => {
   test("Numbers bigger than 1000 are ignored", () => {
     expect(add("1001,2")).toBe(2);
   })
-  test("Delimiters of any length are supported using //[***]\\n format", () => {
+  test("Delimiters of any length are supported using //[***]\n format", () => {
     expect(add("//[***]\n1***2***3")).toBe(6);
   })
 });
