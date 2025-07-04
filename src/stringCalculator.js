@@ -1,3 +1,5 @@
+let callCount = 0;
+
 function parseNumbers(numbers){
   let delimiter = /,|\n/;
   let numsSection = numbers;
@@ -12,6 +14,9 @@ function parseNumbers(numbers){
 
 
 function add(numbers) {
+
+  callCount++;
+
   if(numbers === "") return 0;
 
   const parts = parseNumbers(numbers);
@@ -20,8 +25,14 @@ function add(numbers) {
   if(negatives.length > 0) {
     throw `Negatives not allowed: ${negatives.join(',')}`
   };
-  
+
   return parts.reduce((acc, num) => acc + num, 0);
 }
 
-module.exports = { add };
+function getCalledCounts() {
+  return callCount;
+}
+function resetCounts() {
+  callCount = 0;
+}
+module.exports = { add, getCalledCounts,resetCounts};
