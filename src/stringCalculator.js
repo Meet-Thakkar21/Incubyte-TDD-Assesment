@@ -3,8 +3,8 @@ function add(numbers) {
   if(!numbers.includes(',')){
     return parseInt(numbers);
   }
-  const parts = numbers.split(',').map(n => parseInt(n));
-  return parts.reduce((acc,num) => acc + parseInt(num),0);
+  const parts = numbers.split(/,|\n/).map(n => parseInt(n, 10));
+  return parts.reduce((acc, num) => acc + num, 0);
 }
 
 module.exports = { add };
