@@ -1,9 +1,14 @@
 function add(numbers) {
-  if(numbers == "") return 0;
-  if(!numbers.includes(',')){
-    return parseInt(numbers);
-  }
-  const parts = numbers.split(/,|\n/).map(n => parseInt(n, 10));
+  if(numbers === "") return 0;
+  
+  let delimiter = /,|\n/;
+  let numsSection = numbers;
+  if(numbers.startsWith('//')){
+    const endOfDelimiter = numbers.indexOf('\n');
+    delimiter = new RegExp(numbers[2]);
+    numsSection = numbers.slice(endOfDelimiter + 1);
+  };
+  const parts = numsSection.split(delimiter).map(n => parseInt(n, 10));
   return parts.reduce((acc, num) => acc + num, 0);
 }
 
