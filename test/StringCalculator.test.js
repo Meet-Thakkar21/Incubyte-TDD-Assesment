@@ -16,6 +16,9 @@ describe("Step 1 - Basic tests", () => {
   test("New line separated numbers returns sum", () => {
     expect(add("1\n2,3")).toBe(6);
   })
+  test("Custom Delimiter in //;\\n1;2 format returns sum", () => {
+    expect(add("//;\n1;2")).toBe(3);
+  })
 });
 
 
