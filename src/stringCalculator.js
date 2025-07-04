@@ -3,8 +3,8 @@ let callCount = 0;
 function extractDelimiter(delimiterSection){
   if(delimiterSection.startsWith('[')){
     const delimiters = [...delimiterSection.matchAll(/\[(.*?)]/g)].map(m=>m[1]);
-    const singleCharDelimiters = delimiters.filter(d => d.length === 1);
-    return new RegExp(singleCharDelimiters.map(d => d.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')).join('|'));
+    
+    return new RegExp(delimiters.map(d => d.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')).join('|'));
   }
   return new RegExp(delimiterSection);
 
