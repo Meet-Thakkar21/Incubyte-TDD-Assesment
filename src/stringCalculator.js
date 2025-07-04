@@ -12,7 +12,7 @@ function add(numbers) {
   const parts = numsSection.split(delimiter).map(n => parseInt(n, 10));
   const negatives = parts.filter(num => num < 0);
   if(negatives.length > 0) {
-    throw `Negatives not allowed: ${negatives}`
+    throw `Negatives not allowed: ${negatives.join(',')}`
   };
   return parts.reduce((acc, num) => acc + num, 0);
 }
